@@ -84,7 +84,7 @@ int main() {
             // Draw overlay only when visible (hidden after final scan)
             gridOverlay.drawGrid(frame, colorAbove, colorCenter, language);
 
-            // Draw step-by-step overlay on top
+            // Draw step-by-step overlay on top of the sc
             if (instructionsMode && !instructions.empty()) {
                 int frameWidth = frame.cols;
                 int frameHeight = frame.rows;
@@ -113,10 +113,8 @@ int main() {
                 cv::putText(frame, hint, cv::Point((frameWidth - hintSize.width) / 2, hy), fontFace, 0.6, cv::Scalar(255,255,255), 1);
             }
 
-            // Show the composed frame
             cv::imshow("Rubik's Cube Grid Overlay", frame);
 
-            // Process keyboard input after showing
             int key = cv::waitKey(1);
 
             if (key == 27) { // ESC key to exit preview
@@ -129,7 +127,6 @@ int main() {
                 if (currentStep + 1 < instructions.size()) {
                     currentStep++;
                 } else {
-                    // Finished instructions; hide overlay
                     instructionsMode = false;
                 }
             }
